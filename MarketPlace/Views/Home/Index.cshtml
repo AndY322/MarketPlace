@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Информационный стенд ТЦ";
+}
+<div>
+    <h3>Расположение магазинов</h3>
+    <table>
+        <tr>
+            <td><p>Название магазина</p></td>
+            <td><p>Номер места</p></td>
+            <td><p>Размер</p></td>
+            <td></td>
+        </tr>
+        @foreach (var p in ViewBag.TradePlaces)
+        {
+            <tr>
+                <td><p>@p.Name</p></td>
+                <td><p>@p.Address</p></td>
+                <td><p>@p.Size</p></td>
+                <td><p><a href="/Home/Remove/@p.Id">Удалить</a></p></td>
+            </tr>
+        }
+    </table>
+</div>
