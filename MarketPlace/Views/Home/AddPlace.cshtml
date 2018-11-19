@@ -1,0 +1,26 @@
+﻿@model MarketPlace.Models.TradePlace
+
+@{
+                /**/
+
+                ViewBag.Title = "AddPlace";
+}
+
+<h2>Add Place</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name, "Shop Title")
+    <br />
+    @Html.EditorFor(model => model.Name)
+    <br /><br />
+    @Html.LabelFor(model => model.Size, "Size")
+    <br />
+    @Html.EditorFor(model => model.Size)
+    <br /><br />
+    @Html.LabelFor(model => model.Address, "Shop Address")
+    <br />
+    @Html.EditorFor(model => model.Address)
+    <br /><br />
+    <input type="submit" value="Добавить" />
+}

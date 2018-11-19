@@ -1,27 +1,28 @@
-﻿
+﻿@model MarketPlace.Models.TradePlace
+
 @{
-    ViewBag.Title = "Удаление торгового места";
+    ViewBag.Title = "Remove";
 }
 
-<h2></h2>
-<body>
-<div>
-    <h3>Форма удаления торгового места</h3>
-    <form method="post" action="">
-        <input type="hidden" value="@ViewBag.PlaceId" name="PlaceId" />
-        <table>
-            <tr>
-                <td><p>Введите свое имя </p></td>
-                <td><input type="text" name="Person" /> </td>
-            </tr>
-            <tr>
-                <td><p>Причина удаления</p></td>
-                <td>
-                    <input type="text" name="Reason" />
-                </td>
-            </tr>
-            <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
-        </table>
-    </form>
-</div>
-</body>
+<h2>Remove trade place</h2>
+<dl>
+    <dt>Shop title</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+
+    <dt>Аddress</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Address)
+    </dd>
+
+    <dt>Size</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Size)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}

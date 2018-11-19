@@ -25,18 +25,40 @@ namespace MarketPlace.Controllers
         [HttpGet]
         public ActionResult Remove(int id)
         {
-            ViewBag.PlaceId = id;
+            TradePlace tradePlace = db.TradePlaces.Find(id);
+            if(tradePlace == null)
+            {
+                return HttpNotFound();
+            }
+            return View(tradePlace);
+        }
+
+        [HttpPost, ActionName("Remove")]
+        public ActionResult RemoveConfirmed(int id)
+        {
+            TradePlace tradePlace = db.TradePlaces.Find(id);
+            if(tradePlace == null)
+            {
+                return HttpNotFound();
+            }
+            db.TradePlaces.Remove(tradePlace);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        
+        [HttpGet]
+        public ActionResult AddPlace()
+        {
             return View();
         }
 
-
         [HttpPost]
-        public string Remove(RemoveTradePlace remove)
+        public ActionResult AddPlace(TradePlace place)
         {
-            remove.Date = DateTime.Now;
-            db.RemoveTradePlaces.Add(remove);
+            db.TradePlaces.Add(place);
             db.SaveChanges();
-            return "Торговое место удалено почти";
+
+            return RedirectToAction("Index");
         }
     }
 }
