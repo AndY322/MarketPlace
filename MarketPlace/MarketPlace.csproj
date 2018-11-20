@@ -152,13 +152,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AddPlace.cs" />
-    <Compile Include="Models\RemoveTradePlace.cs" />
+    <Compile Include="Models\Employeer.cs" />
     <Compile Include="Models\TradePlace.cs" />
     <Compile Include="Models\TradePlaceContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MarketPlaceDB.mdf" />
+    <Content Include="App_Data\MarketPlaceDB_log.ldf">
+      <DependentUpon>MarketPlaceDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -200,10 +203,9 @@
     <Content Include="Views\Home\GetPlace.cshtml" />
     <Content Include="Views\Home\AddPlace.cshtml" />
     <Content Include="Views\Home\Remove.cshtml" />
+    <Content Include="Views\Home\EditPlace.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

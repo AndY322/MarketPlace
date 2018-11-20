@@ -17,9 +17,8 @@ namespace MarketPlace.Controllers
 
         public ActionResult Index()
         {
-            IEnumerable<TradePlace> places = db.TradePlaces;
-            ViewBag.TradePlaces = places;
-            return View();
+            var tradePlaces = db.TradePlaces;
+            return View(tradePlaces);
         }
 
         [HttpGet]
@@ -58,6 +57,31 @@ namespace MarketPlace.Controllers
             db.TradePlaces.Add(place);
             db.SaveChanges();
 
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public ActionResult EditPlace(int? id)
+        {
+            if(id == null)
+            {
+                return HttpNotFound();
+            }
+            TradePlace tradePlace = db.TradePlaces.Find(id);
+            if(tradePlace != null)
+            {
+                return View(tradePlace);
+            }
+            return HttpNotFound();
+        }
+
+
+        [HttpPost]
+        public ActionResult EditPlace(TradePlace tradePlace)
+        {
+            db.Entry(tradePlace).State = EntityState.Modified;
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
     }

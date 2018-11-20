@@ -1,24 +1,44 @@
-﻿@{
-    ViewBag.Title = "Информационный стенд ТЦ";
+﻿@model IEnumerable<MarketPlace.Models.TradePlace>
+
+@{
+    ViewBag.Title = "Index";
 }
-<td><p><a href="/Home/AddPlace">Add</a></p></td>
-<div>
-    <h3>Расположение магазинов</h3>
-    <table>
-        <tr>
-            <td><p>Название магазина</p></td>
-            <td><p>Номер места</p></td>
-            <td><p>Размер</p></td>
-            <td></td>
-        </tr>
-        @foreach (var p in ViewBag.TradePlaces)
-        {
-            <tr>
-                <td><p>@p.Name</p></td>
-                <td><p>@p.Address</p></td>
-                <td><p>@p.Size</p></td>
-                <td><p><a href="/Home/Remove/@p.Id">Удалить</a></p></td>
-            </tr>
-        }
-    </table>
-</div>
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add New", "AddPlace")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit place", "EditPlace", new { id=item.Id }) |
+            @Html.ActionLink("Remove", "Remove", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

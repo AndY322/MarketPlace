@@ -14,8 +14,6 @@ namespace MarketPlace
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new PlaceDbInitializer());
-
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
