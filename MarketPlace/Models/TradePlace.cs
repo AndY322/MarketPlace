@@ -12,11 +12,11 @@ namespace MarketPlace.Models
         public string Address { get; set; }
         public string Name { get; set; }
 
-        public ICollection<Employeer> Employeers { get; set; }
+        public ICollection<Employee> Employees { get; set; }
 
         public TradePlace()
         {
-            Employeers = new List<Employeer>();
+            Employees = new List<Employee>();
         }
     }
 }

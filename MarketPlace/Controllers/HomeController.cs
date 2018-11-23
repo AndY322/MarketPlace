@@ -21,6 +21,7 @@ namespace MarketPlace.Controllers
             return View(tradePlaces);
         }
 
+
         [HttpGet]
         public ActionResult Remove(int id)
         {
@@ -31,6 +32,7 @@ namespace MarketPlace.Controllers
             }
             return View(tradePlace);
         }
+
 
         [HttpPost, ActionName("Remove")]
         public ActionResult RemoveConfirmed(int id)
@@ -45,11 +47,13 @@ namespace MarketPlace.Controllers
             return RedirectToAction("Index");
         }
         
+
         [HttpGet]
         public ActionResult AddPlace()
         {
             return View();
         }
+
 
         [HttpPost]
         public ActionResult AddPlace(TradePlace place)
@@ -82,6 +86,26 @@ namespace MarketPlace.Controllers
         {
             db.Entry(tradePlace).State = EntityState.Modified;
             db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public ActionResult ShowDetails(int id)
+        {
+            
+            var employee = db.Employees.Include(e => e.TradePlace).Where(e => e.TradePlaceId == id);
+            if (employee == null)
+            {
+                return HttpNotFound();
+            }
+            return View(employee);
+        }
+
+
+        [HttpPost]
+        public ActionResult ShowDetails()
+        {
             return RedirectToAction("Index");
         }
     }

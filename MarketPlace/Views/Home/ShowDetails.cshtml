@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MarketPlace.Models.Employee>
+
+@{
+    ViewBag.Title = "ShowDetails";
+}
+
+@foreach (var item in Model)
+{
+    <h2>@Html.DisplayFor(model => item.TradePlace.Name)</h2>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Post)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Post)
+            </td>
+        </tr>
+    }
+</table>
+@using (Html.BeginForm("ShowDetails", "Home", FormMethod.Post))
+{
+    <p><input type="submit" value="Back" /></p>
+}

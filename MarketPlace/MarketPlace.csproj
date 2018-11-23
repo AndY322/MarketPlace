@@ -152,7 +152,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Employeer.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\TradePlace.cs" />
     <Compile Include="Models\TradePlaceContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -199,11 +199,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Result.cshtml" />
-    <Content Include="Views\Home\GetPlace.cshtml" />
     <Content Include="Views\Home\AddPlace.cshtml" />
     <Content Include="Views\Home\Remove.cshtml" />
     <Content Include="Views\Home\EditPlace.cshtml" />
+    <Content Include="Views\Home\ShowDetails.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
