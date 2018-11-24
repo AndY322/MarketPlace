@@ -203,6 +203,8 @@
     <Content Include="Views\Home\Remove.cshtml" />
     <Content Include="Views\Home\EditPlace.cshtml" />
     <Content Include="Views\Home\ShowDetails.cshtml" />
+    <Content Include="Views\Home\CreateEmployeeOnMainPage.cshtml" />
+    <Content Include="Views\Home\DeleteEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

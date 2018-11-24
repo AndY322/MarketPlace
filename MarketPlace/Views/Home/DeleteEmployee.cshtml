@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MarketPlace.Models.Employee>
+
+@{
+    ViewBag.Title = "DeleteEmployee";
+}
+
+<h2>Delete Employee</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TradePlace.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Post)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TradePlace.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Post)
+        </td>
+        <td>
+            @using (Html.BeginForm())
+    {
+        <input type="submit" value="Delete" /> @Html.ActionLink("Back", "ShowDetails", new { id = item.TradePlaceId })
+            }
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,28 @@
+﻿@model MarketPlace.Models.Employee
+
+@{
+    ViewBag.Title = "CreateEmployeeOnMainPage";
+}
+
+<h2>Add employee</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name, "Employee name")
+    <br />
+    @Html.EditorFor(model => model.Name)
+    <br /><br />
+    @Html.LabelFor(model => model.Surname, "Surname")
+    <br />
+    @Html.EditorFor(model => model.Surname)
+    <br /><br />
+    @Html.LabelFor(model => model.Post, "Post")
+    <br />
+    @Html.EditorFor(model => model.Post)
+    <br /><br />
+    @Html.LabelFor(model => model.Post, "Trade Place")
+    <br />
+    @Html.DropDownListFor(model => model.TradePlaceId, ViewBag.tradePlace as SelectList)
+    <br /><br />
+    <input type="submit" value="Добавить" />
+}

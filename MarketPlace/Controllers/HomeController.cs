@@ -91,9 +91,12 @@ namespace MarketPlace.Controllers
 
 
         [HttpGet]
-        public ActionResult ShowDetails(int id)
+        public ActionResult ShowDetails(int? id)
         {
-            
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
             var employee = db.Employees.Include(e => e.TradePlace).Where(e => e.TradePlaceId == id);
             if (employee == null)
             {
@@ -106,6 +109,54 @@ namespace MarketPlace.Controllers
         [HttpPost]
         public ActionResult ShowDetails()
         {
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public ActionResult CreateEmployeeOnMainPage()
+        {
+            SelectList tradePlace = new SelectList(db.TradePlaces, "Id", "Name");
+            ViewBag.tradePlace = tradePlace;
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult CreateEmployeeOnMainPage(Employee employee)
+        {
+            db.Employees.Add(employee);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public ActionResult DeleteEmployee(int? id)
+        {
+            if(id == null)
+            {
+                return HttpNotFound();
+            }
+            var employee = db.Employees.Include(e => e.TradePlace).Where(e => e.Id == id); 
+            if (employee == null)
+            {
+                return HttpNotFound();
+            }
+            return View(employee);
+        }
+
+
+        [HttpPost, ActionName("DeleteEmployee")]
+        public ActionResult DeleteConfrim(int id)
+        {
+            Employee employee = db.Employees.Find(id);
+            if(employee == null)
+            {
+                return HttpNotFound();
+            }
+            db.Employees.Remove(employee);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
     }
