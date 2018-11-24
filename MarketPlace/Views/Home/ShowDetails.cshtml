@@ -4,10 +4,8 @@
     ViewBag.Title = "ShowDetails";
 }
 
-@foreach (var item in Model)
-{
-    <h2>@Html.DisplayFor(model => item.TradePlace.Name)</h2>
-}
+<h2>@ViewBag.tradePlace.Name</h2>
+<p>@Html.ActionLink("Add new employee", "AddEmployee", new { id = ViewBag.tradePlace.Id})</p>
 <table class="table">
     <tr>
         <th>
@@ -41,8 +39,4 @@
     </tr>
     }
 </table>
-
-@using (Html.BeginForm("ShowDetails", "Home", FormMethod.Post))
-{
-    <p><input type="submit" value="Back" /></p>
-}
+@Html.ActionLink("Back", "Index") 

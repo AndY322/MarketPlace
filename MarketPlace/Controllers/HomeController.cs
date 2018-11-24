@@ -98,18 +98,13 @@ namespace MarketPlace.Controllers
                 return HttpNotFound();
             }
             var employee = db.Employees.Include(e => e.TradePlace).Where(e => e.TradePlaceId == id);
+            var tradePlace = db.TradePlaces.Find(id);
+            ViewBag.tradePlace = tradePlace;
             if (employee == null)
             {
                 return HttpNotFound();
             }
             return View(employee);
-        }
-
-
-        [HttpPost]
-        public ActionResult ShowDetails()
-        {
-            return RedirectToAction("Index");
         }
 
 
@@ -131,33 +126,47 @@ namespace MarketPlace.Controllers
         }
 
 
-        [HttpGet]
         public ActionResult DeleteEmployee(int? id)
         {
             if(id == null)
             {
                 return HttpNotFound();
             }
-            var employee = db.Employees.Include(e => e.TradePlace).Where(e => e.Id == id); 
-            if (employee == null)
-            {
-                return HttpNotFound();
-            }
-            return View(employee);
-        }
-
-
-        [HttpPost, ActionName("DeleteEmployee")]
-        public ActionResult DeleteConfrim(int id)
-        {
-            Employee employee = db.Employees.Find(id);
+            var employee = db.Employees.Find(id);
             if(employee == null)
             {
                 return HttpNotFound();
             }
             db.Employees.Remove(employee);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ShowDetails", new { id = employee.TradePlaceId});
+        }
+
+
+        [HttpGet]
+        public ActionResult AddEmployee(int id)
+        {
+            var tradePlace = db.TradePlaces.Find(id);
+            
+            if(tradePlace == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.tradePlace = tradePlace;
+            return View();
+        }
+
+
+        [HttpPost, ActionName("AddEmployee")]
+        public ActionResult AddEmployeePost(Employee employee)
+        {
+            if(employee == null)
+            {
+                HttpNotFound();
+            }
+            db.Employees.Add(employee);
+            db.SaveChanges();
+            return RedirectToAction("ShowDetails", new { id = employee.TradePlaceId });
         }
     }
 }

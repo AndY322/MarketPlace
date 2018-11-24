@@ -1,0 +1,26 @@
+﻿@model MarketPlace.Models.Employee
+
+@{
+    ViewBag.Title = "AddEmployee";
+}
+
+<h2>Add Employee</h2>
+<p>@ViewBag.tradePlace.Name</p>
+
+@using (Html.BeginForm())
+{
+    <input type="hidden" value="@ViewBag.tradePlace.Id" name="TradePlaceId" />
+    @Html.LabelFor(model => model.Name, "Name")
+    <br />
+    @Html.EditorFor(model => model.Name)
+    <br /><br />
+    @Html.LabelFor(model => model.Surname, "Surname")
+    <br />
+    @Html.EditorFor(model => model.Surname)
+    <br /><br />
+    @Html.LabelFor(model => model.Post, "Post")
+    <br />
+    @Html.EditorFor(model => model.Post)
+    <br /><br />
+    <input type="submit" value="Добавить" />
+}
