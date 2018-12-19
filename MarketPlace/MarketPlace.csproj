@@ -206,6 +206,7 @@
     <Content Include="Views\Home\CreateEmployeeOnMainPage.cshtml" />
     <Content Include="Views\Home\DeleteEmployee.cshtml" />
     <Content Include="Views\Home\AddEmployee.cshtml" />
+    <Content Include="Views\Home\EditEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

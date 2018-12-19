@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace MarketPlace.Models
 {
@@ -9,6 +10,7 @@ namespace MarketPlace.Models
     {
         public int Id { get; set; }
         public int Size { get; set; }
+        [RegularExpression(@"\d*")]
         public string Address { get; set; }
         public string Name { get; set; }
 

@@ -26,7 +26,7 @@ namespace MarketPlace.Controllers
         public ActionResult Remove(int id)
         {
             TradePlace tradePlace = db.TradePlaces.Find(id);
-            if(tradePlace == null)
+            if (tradePlace == null)
             {
                 return HttpNotFound();
             }
@@ -38,7 +38,7 @@ namespace MarketPlace.Controllers
         public ActionResult RemoveConfirmed(int id)
         {
             TradePlace tradePlace = db.TradePlaces.Find(id);
-            if(tradePlace == null)
+            if (tradePlace == null)
             {
                 return HttpNotFound();
             }
@@ -46,7 +46,7 @@ namespace MarketPlace.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        
+
 
         [HttpGet]
         public ActionResult AddPlace()
@@ -60,7 +60,6 @@ namespace MarketPlace.Controllers
         {
             db.TradePlaces.Add(place);
             db.SaveChanges();
-
             return RedirectToAction("Index");
         }
 
@@ -68,12 +67,12 @@ namespace MarketPlace.Controllers
         [HttpGet]
         public ActionResult EditPlace(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return HttpNotFound();
             }
             TradePlace tradePlace = db.TradePlaces.Find(id);
-            if(tradePlace != null)
+            if (tradePlace != null)
             {
                 return View(tradePlace);
             }
@@ -128,18 +127,18 @@ namespace MarketPlace.Controllers
 
         public ActionResult DeleteEmployee(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return HttpNotFound();
             }
             var employee = db.Employees.Find(id);
-            if(employee == null)
+            if (employee == null)
             {
                 return HttpNotFound();
             }
             db.Employees.Remove(employee);
             db.SaveChanges();
-            return RedirectToAction("ShowDetails", new { id = employee.TradePlaceId});
+            return RedirectToAction("ShowDetails", new { id = employee.TradePlaceId });
         }
 
 
@@ -147,8 +146,8 @@ namespace MarketPlace.Controllers
         public ActionResult AddEmployee(int id)
         {
             var tradePlace = db.TradePlaces.Find(id);
-            
-            if(tradePlace == null)
+
+            if (tradePlace == null)
             {
                 return HttpNotFound();
             }
@@ -160,11 +159,37 @@ namespace MarketPlace.Controllers
         [HttpPost, ActionName("AddEmployee")]
         public ActionResult AddEmployeePost(Employee employee)
         {
-            if(employee == null)
+            if (employee == null)
             {
                 HttpNotFound();
             }
             db.Employees.Add(employee);
+            db.SaveChanges();
+            return RedirectToAction("ShowDetails", new { id = employee.TradePlaceId });
+        }
+
+
+        [HttpGet]
+        public ActionResult EditEmployee(int id)
+        {
+            var employee = db.Employees.Find(id);
+            ViewBag.tradePlace = db.TradePlaces.Find(employee.TradePlaceId);
+            if(employee == null)
+            {
+                return HttpNotFound();
+            }
+            return View(employee);
+        }
+
+
+        [HttpPost]
+        public ActionResult EditEmployee(Employee employee)
+        {
+            if(employee == null)
+            {
+                return HttpNotFound();
+            }
+            db.Entry(employee).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("ShowDetails", new { id = employee.TradePlaceId });
         }
