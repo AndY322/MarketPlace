@@ -15,10 +15,17 @@ namespace MarketPlace.Controllers
         TradePlaceContext db = new TradePlaceContext();
 
 
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var tradePlaces = db.TradePlaces;
-            return View(tradePlaces);
+            var tradePlace = from tp in db.TradePlaces
+                             select tp;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                tradePlace = tradePlace.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(tradePlace);
         }
 
 
@@ -193,5 +200,8 @@ namespace MarketPlace.Controllers
             db.SaveChanges();
             return RedirectToAction("ShowDetails", new { id = employee.TradePlaceId });
         }
+       
+
+        
     }
 }

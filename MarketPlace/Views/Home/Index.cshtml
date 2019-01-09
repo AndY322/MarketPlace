@@ -4,6 +4,13 @@
     ViewBag.Title = "Index";
 }
 
+<form asp-controller="Home" asp-action="Index">
+    <p>
+        <input type="text" name="searchString">
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
 <table class="table">
     <tr>
         <th>

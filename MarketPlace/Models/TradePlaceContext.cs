@@ -9,6 +9,7 @@ namespace MarketPlace.Models
     public class TradePlaceContext : DbContext
     {
         public DbSet<TradePlace> TradePlaces { get; set; }
+
         public DbSet<Employee> Employees { get; set; }
     }
 }

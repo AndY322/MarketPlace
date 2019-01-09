@@ -95,8 +95,8 @@ D:\C#\MarketPlace\MarketPlace\bin\ru\System.Web.Razor.resources.dll
 D:\C#\MarketPlace\MarketPlace\bin\ru\System.Web.WebPages.resources.dll
 D:\C#\MarketPlace\MarketPlace\bin\ru\System.Web.WebPages.Deployment.resources.dll
 D:\C#\MarketPlace\MarketPlace\bin\ru\System.Web.WebPages.Razor.resources.dll
-D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.csprojResolveAssemblyReference.cache
 D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.csproj.CoreCompileInputs.cache
 D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.csproj.CopyComplete
 D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.dll
 D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.pdb
+D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.csprojAssemblyReference.cache

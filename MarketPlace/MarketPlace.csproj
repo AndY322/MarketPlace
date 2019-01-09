@@ -208,7 +208,9 @@
     <Content Include="Views\Home\AddEmployee.cshtml" />
     <Content Include="Views\Home\EditEmployee.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Search\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
