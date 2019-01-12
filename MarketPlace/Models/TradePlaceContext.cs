@@ -11,5 +11,7 @@ namespace MarketPlace.Models
         public DbSet<TradePlace> TradePlaces { get; set; }
 
         public DbSet<Employee> Employees { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }

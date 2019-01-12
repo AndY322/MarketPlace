@@ -30,6 +30,7 @@ namespace MarketPlace.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public ActionResult Remove(int id)
         {
             TradePlace tradePlace = db.TradePlaces.Find(id);
@@ -41,6 +42,7 @@ namespace MarketPlace.Controllers
         }
 
 
+        [Authorize]
         [HttpPost, ActionName("Remove")]
         public ActionResult RemoveConfirmed(int id)
         {
@@ -55,6 +57,7 @@ namespace MarketPlace.Controllers
         }
 
 
+        [Authorize]
         [HttpGet]
         public ActionResult AddPlace()
         {
@@ -62,6 +65,7 @@ namespace MarketPlace.Controllers
         }
 
 
+        [Authorize]
         [HttpPost]
         public ActionResult AddPlace(TradePlace place)
         {
@@ -71,6 +75,7 @@ namespace MarketPlace.Controllers
         }
 
 
+        [Authorize]
         [HttpGet]
         public ActionResult EditPlace(int? id)
         {
@@ -87,6 +92,7 @@ namespace MarketPlace.Controllers
         }
 
 
+        [Authorize]
         [HttpPost]
         public ActionResult EditPlace(TradePlace tradePlace)
         {
@@ -96,6 +102,7 @@ namespace MarketPlace.Controllers
         }
 
 
+        [Authorize]
         [HttpGet]
         public ActionResult ShowDetails(int? id)
         {
@@ -114,6 +121,7 @@ namespace MarketPlace.Controllers
         }
 
 
+        [Authorize]
         [HttpGet]
         public ActionResult CreateEmployeeOnMainPage()
         {
@@ -123,6 +131,7 @@ namespace MarketPlace.Controllers
         }
 
 
+        [Authorize]
         [HttpPost]
         public ActionResult CreateEmployeeOnMainPage(Employee employee)
         {
@@ -132,6 +141,7 @@ namespace MarketPlace.Controllers
         }
 
 
+        [Authorize]
         public ActionResult DeleteEmployee(int? id)
         {
             if (id == null)
@@ -149,6 +159,7 @@ namespace MarketPlace.Controllers
         }
 
 
+        [Authorize]
         [HttpGet]
         public ActionResult AddEmployee(int id)
         {
@@ -163,6 +174,7 @@ namespace MarketPlace.Controllers
         }
 
 
+        [Authorize]
         [HttpPost, ActionName("AddEmployee")]
         public ActionResult AddEmployeePost(Employee employee)
         {
@@ -176,6 +188,7 @@ namespace MarketPlace.Controllers
         }
 
 
+        [Authorize]
         [HttpGet]
         public ActionResult EditEmployee(int id)
         {
@@ -189,6 +202,7 @@ namespace MarketPlace.Controllers
         }
 
 
+        [Authorize]
         [HttpPost]
         public ActionResult EditEmployee(Employee employee)
         {

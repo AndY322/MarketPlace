@@ -100,3 +100,7 @@ D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.csproj.CopyComplete
 D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.dll
 D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.pdb
 D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.csprojAssemblyReference.cache
+D:\C#\MarketPlace\MarketPlace\bin\System.Web.Providers.dll
+D:\C#\MarketPlace\MarketPlace\bin\BCrypt.Net.dll
+D:\C#\MarketPlace\MarketPlace\bin\DevOne.Security.Cryptography.BCrypt.dll
+D:\C#\MarketPlace\MarketPlace\bin\BCrypt.Net.xml

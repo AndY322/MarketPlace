@@ -19,10 +19,18 @@
                 </button>
                 @Html.ActionLink("Схема торгового центра", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                </ul>
+            <div class="col-md-4 col-md-offset-4" style="font-size: 120%; color: red; position: absolute; right: 100px; top: 10px;">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @Html.DisplayName(@User.Identity.Name);
+                        @Html.ActionLink("Logout", "Logoff", "Account");
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Login", "Login", "Account");
+                        @Html.ActionLink("Register", "Register", "Account");
+                    }
+                
             </div>
         </div>
     </div>
@@ -30,7 +38,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
+            <p>&copy; Dimas Inc.</p>
         </footer>
     </div>
 

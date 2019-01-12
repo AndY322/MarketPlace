@@ -11,6 +11,10 @@
     </p>
 </form>
 
+<p>
+
+</p>
+
 <table class="table">
     <tr>
         <th>
@@ -25,24 +29,25 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit place", "EditPlace", new { id = item.Id }) |
-            @Html.ActionLink("Staff", "ShowDetails", new { id = item.Id }) |
-            @Html.ActionLink("Remove", "Remove", new { id = item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit place", "EditPlace", new { id = item.Id }) |
+                @Html.ActionLink("Staff", "ShowDetails", new { id = item.Id }) |
+                @Html.ActionLink("Remove", "Remove", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
 <p>
