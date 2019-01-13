@@ -13,10 +13,12 @@
     @Html.LabelFor(model => model.Name, "Name")
     <br />
     @Html.EditorFor(model => model.Name)
+    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
     <br /><br />
     @Html.LabelFor(model => model.Surname, "Surname")
     <br />
     @Html.EditorFor(model => model.Surname)
+    @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
     <br /><br />
     @Html.LabelFor(model => model.Post, "Post")
     <br />

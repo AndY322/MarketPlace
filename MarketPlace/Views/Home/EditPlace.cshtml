@@ -13,19 +13,22 @@
             @Html.LabelFor(m => m.Name, "Shop Title")
             <br />
             @Html.EditorFor(m => m.Name)
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
         </p>
         <p>
             @Html.LabelFor(m => m.Size, "Size")
             <br />
             @Html.EditorFor(m => m.Size)
+            @Html.ValidationMessageFor(m => m.Size, "", new { @class = "text-danger" })
 
         </p>
         <p>
             @Html.LabelFor(m => m.Address, "Address")
             <br />
             @Html.EditorFor(m => m.Address)
+            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
         </p>
-        <p><input type="submit" value="Отправить" /></p>
+        <p><input type="submit" value="Submit" /></p>
     </fieldset>
 }
 

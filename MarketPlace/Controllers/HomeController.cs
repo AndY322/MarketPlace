@@ -69,9 +69,13 @@ namespace MarketPlace.Controllers
         [HttpPost]
         public ActionResult AddPlace(TradePlace place)
         {
-            db.TradePlaces.Add(place);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                db.TradePlaces.Add(place);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
         }
 
 
@@ -96,9 +100,13 @@ namespace MarketPlace.Controllers
         [HttpPost]
         public ActionResult EditPlace(TradePlace tradePlace)
         {
-            db.Entry(tradePlace).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                db.Entry(tradePlace).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(tradePlace);
         }
 
 
@@ -135,9 +143,15 @@ namespace MarketPlace.Controllers
         [HttpPost]
         public ActionResult CreateEmployeeOnMainPage(Employee employee)
         {
-            db.Employees.Add(employee);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                db.Employees.Add(employee);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            SelectList tradePlace = new SelectList(db.TradePlaces, "Id", "Name");
+            ViewBag.tradePlace = tradePlace;
+            return View();
         }
 
 
@@ -178,13 +192,18 @@ namespace MarketPlace.Controllers
         [HttpPost, ActionName("AddEmployee")]
         public ActionResult AddEmployeePost(Employee employee)
         {
-            if (employee == null)
+            if (ModelState.IsValid)
             {
-                HttpNotFound();
+                if (employee == null)
+                {
+                    HttpNotFound();
+                }
+                db.Employees.Add(employee);
+                db.SaveChanges();
+                return RedirectToAction("ShowDetails", new { id = employee.TradePlaceId });
             }
-            db.Employees.Add(employee);
-            db.SaveChanges();
-            return RedirectToAction("ShowDetails", new { id = employee.TradePlaceId });
+            var returnView = AddEmployee(employee.TradePlaceId);
+            return returnView;
         }
 
 
@@ -206,13 +225,18 @@ namespace MarketPlace.Controllers
         [HttpPost]
         public ActionResult EditEmployee(Employee employee)
         {
-            if(employee == null)
+            if (ModelState.IsValid)
             {
-                return HttpNotFound();
+                if (employee == null)
+                {
+                    return HttpNotFound();
+                }
+                db.Entry(employee).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ShowDetails", new { id = employee.TradePlaceId });
             }
-            db.Entry(employee).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("ShowDetails", new { id = employee.TradePlaceId });
+            var returnView = EditEmployee(employee.TradePlaceId);
+            return returnView;
         }
        
 

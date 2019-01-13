@@ -1,9 +1,9 @@
 ﻿@model MarketPlace.Models.TradePlace
 
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "AddPlace";
+    ViewBag.Title = "AddPlace";
 }
 
 <h2>Add Place</h2>
@@ -13,14 +13,17 @@
     @Html.LabelFor(model => model.Name, "Shop Title")
     <br />
     @Html.EditorFor(model => model.Name)
+    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
     <br /><br />
     @Html.LabelFor(model => model.Size, "Size")
     <br />
     @Html.EditorFor(model => model.Size)
+    @Html.ValidationMessageFor(m => m.Size, "", new { @class = "text-danger" })
     <br /><br />
     @Html.LabelFor(model => model.Address, "Shop Address")
     <br />
     @Html.EditorFor(model => model.Address)
+    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
     <br /><br />
-    <input type="submit" value="Добавить" />
+    <input type="submit" value="Add" />
 }
