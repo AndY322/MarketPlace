@@ -1,4 +1,8 @@
-﻿@model IEnumerable<MarketPlace.Models.TradePlace>
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<MarketPlace.Models.TradePlace>
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -11,20 +15,16 @@
     </p>
 </form>
 
-<p>
-
-</p>
-
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Size)
+            Size
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address)
+            Address
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Name
         </th>
         <th></th>
     </tr>
@@ -54,3 +54,9 @@
     @Html.ActionLink("Add New tradepalce", "AddPlace") |
     @Html.ActionLink("Add New employee", "CreateEmployeeOnMainPage")
 </p>
+
+<p>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) from @Model.PageCount
+</p>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { ViewBag.searchString, page }))
+

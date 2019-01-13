@@ -121,3 +121,7 @@ D:\C#\MarketPlace\MarketPlace\bin\Microsoft.Owin.Security.xml
 D:\C#\MarketPlace\MarketPlace\bin\Microsoft.Owin.Security.Cookies.xml
 D:\C#\MarketPlace\MarketPlace\bin\Microsoft.Owin.Security.OAuth.xml
 D:\C#\MarketPlace\MarketPlace\bin\Simplify.Windows.Forms.xml
+D:\C#\MarketPlace\MarketPlace\bin\PagedList.dll
+D:\C#\MarketPlace\MarketPlace\bin\PagedList.Mvc.dll
+D:\C#\MarketPlace\MarketPlace\bin\PagedList.xml
+D:\C#\MarketPlace\MarketPlace\bin\PagedList.Mvc.xml

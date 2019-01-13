@@ -7,6 +7,8 @@ using MarketPlace.Models;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using PagedList.Mvc;
+using PagedList;
 
 namespace MarketPlace.Controllers
 {
@@ -15,17 +17,21 @@ namespace MarketPlace.Controllers
         TradePlaceContext db = new TradePlaceContext();
 
 
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString, int? page)
         {
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
             var tradePlace = from tp in db.TradePlaces
                              select tp;
 
             if (!String.IsNullOrEmpty(searchString))
             {
+                ViewBag.searchString = searchString;
                 tradePlace = tradePlace.Where(s => s.Name.Contains(searchString));
             }
-
-            return View(tradePlace);
+            var tpList = tradePlace.ToList();
+            return View(tpList.ToPagedList(pageNumber, pageSize));
         }
 
 
