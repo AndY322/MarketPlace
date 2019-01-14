@@ -21,6 +21,8 @@ namespace MarketPlace.Models
         [Required(ErrorMessage = "The Name field is required")]
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
         public virtual ICollection<Employee> Employees { get; set; }
 
         public TradePlace()

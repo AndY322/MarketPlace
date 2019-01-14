@@ -15,6 +15,7 @@ namespace MarketPlace.Controllers
     public class AccountController : Controller
     {
         const int WorkFactor = 14;
+
         public ActionResult Login()
         {
             return View();
@@ -50,6 +51,7 @@ namespace MarketPlace.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
@@ -85,6 +87,7 @@ namespace MarketPlace.Controllers
 
             return View(model);
         }
+
         public ActionResult Logoff()
         {
             FormsAuthentication.SignOut();

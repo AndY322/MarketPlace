@@ -7,28 +7,34 @@
 <h2>Edit Place #@Model.Id</h2>
 @using (Html.BeginForm("EditPlace", "Home", FormMethod.Post))
 {
-    <fieldset>
-        @Html.HiddenFor(m => m.Id)
-        <p>
-            @Html.LabelFor(m => m.Name, "Shop Title")
-            <br />
-            @Html.EditorFor(m => m.Name)
-            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
-        </p>
-        <p>
-            @Html.LabelFor(m => m.Size, "Size")
-            <br />
-            @Html.EditorFor(m => m.Size)
-            @Html.ValidationMessageFor(m => m.Size, "", new { @class = "text-danger" })
+<fieldset>
+    @Html.HiddenFor(m => m.Id)
+    <p>
+        @Html.LabelFor(m => m.Name, "Shop Title")
+        <br />
+        @Html.EditorFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+    </p>
+    <p>
+        @Html.LabelFor(m => m.Size, "Size")
+        <br />
+        @Html.EditorFor(m => m.Size)
+        @Html.ValidationMessageFor(m => m.Size, "", new { @class = "text-danger" })
 
-        </p>
-        <p>
-            @Html.LabelFor(m => m.Address, "Address")
-            <br />
-            @Html.EditorFor(m => m.Address)
-            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
-        </p>
-        <p><input type="submit" value="Submit" /></p>
-    </fieldset>
+    </p>
+    <p>
+        @Html.LabelFor(m => m.Address, "Address")
+        <br />
+        @Html.EditorFor(m => m.Address)
+        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+    </p>
+    <p>
+        @Html.LabelFor(m => m.Description, "Description")
+        <br />
+        @Html.TextAreaFor(m => m.Description, new { @class = "input-description"})
+        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+    </p>
+    <p><input type="submit" value="Submit" /></p>
+</fieldset>
 }
 
