@@ -125,3 +125,11 @@ D:\C#\MarketPlace\MarketPlace\bin\PagedList.dll
 D:\C#\MarketPlace\MarketPlace\bin\PagedList.Mvc.dll
 D:\C#\MarketPlace\MarketPlace\bin\PagedList.xml
 D:\C#\MarketPlace\MarketPlace\bin\PagedList.Mvc.xml
+D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.Migrations.UpadteDB.resources
+D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.csproj.GenerateResource.cache
+D:\C#\MarketPlace\MarketPlace\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\C#\MarketPlace\MarketPlace\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.Migrations.addRoles.resources
+D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.Migrations.addRolesOnMoreTime.resources
+D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.Migrations.updateRolesNewNew.resources
+D:\C#\MarketPlace\MarketPlace\obj\Debug\MarketPlace.Migrations.newnewnewAddRole.resources

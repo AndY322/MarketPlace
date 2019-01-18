@@ -19,7 +19,8 @@ namespace MarketPlace.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [RegularExpression(@"\d*")]
-        public int? Age { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        public string ConfirmedPassword { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using System.Web.Security;
 using System.Security.Cryptography;
 using System.Text;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace MarketPlace.Controllers
 {
@@ -31,8 +32,8 @@ namespace MarketPlace.Controllers
 
                 using (TradePlaceContext db = new TradePlaceContext())
                 {
-                    user = db.Users.FirstOrDefault(u => u.Email == model.Login);
-                    if (BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
+                    user = db.Users.FirstOrDefault(u => u.UserName == model.Login);
+                    if (user != null && BCrypt.Net.BCrypt.Verify(model.Password, user.PasswordHash))
                     {
                         FormsAuthentication.SetAuthCookie(model.Login, true);
                         return RedirectToAction("Index", "Home");
@@ -58,20 +59,26 @@ namespace MarketPlace.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(model.ConfirmedPassword != model.Password)
+                {
+                    ModelState.AddModelError("", "Passwords don`t match");
+                    return View(model);
+                }
                 User user = null;
                 using (TradePlaceContext db = new TradePlaceContext())
                 {
-                    user = db.Users.FirstOrDefault(u => u.Email == model.Login);
+                    user = db.Users.FirstOrDefault(u => u.UserName == model.Login);
                 }
                 if (user == null)
                 {
                     using (TradePlaceContext db = new TradePlaceContext())
                     {
                         var hashedPassword = BCrypt.Net.BCrypt.HashPassword(model.Password, WorkFactor);
-                        db.Users.Add(new User { Email = model.Login, Password = hashedPassword, Age = model.Age });
+                        db.Users.Add(
+                            new User {UserName = model.Login, PasswordHash = hashedPassword, EmailConfirmed = false,
+                                LockoutEnabled = false, AccessFailedCount = 0});
                         db.SaveChanges();
-
-                        user = db.Users.Where(u => u.Email == model.Login && u.Password == model.Password).FirstOrDefault();
+                        user = db.Users.Where(u => u.UserName == model.Login).FirstOrDefault();
                     }
                     if (user != null)
                     {

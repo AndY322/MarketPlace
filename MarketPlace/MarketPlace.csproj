@@ -71,8 +71,11 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
@@ -192,15 +195,39 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Constants\Constants.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901151839443_UpadteDB.cs" />
+    <Compile Include="Migrations\201901151839443_UpadteDB.Designer.cs">
+      <DependentUpon>201901151839443_UpadteDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901161934194_addRoles.cs" />
+    <Compile Include="Migrations\201901161934194_addRoles.Designer.cs">
+      <DependentUpon>201901161934194_addRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901162038134_addRolesOnMoreTime.cs" />
+    <Compile Include="Migrations\201901162038134_addRolesOnMoreTime.Designer.cs">
+      <DependentUpon>201901162038134_addRolesOnMoreTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901181458237_updateRolesNewNew.cs" />
+    <Compile Include="Migrations\201901181458237_updateRolesNewNew.Designer.cs">
+      <DependentUpon>201901181458237_updateRolesNewNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901182027578_newnewnewAddRole.cs" />
+    <Compile Include="Migrations\201901182027578_newnewnewAddRole.Designer.cs">
+      <DependentUpon>201901182027578_newnewnewAddRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AppUserManager.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\TradePlace.cs" />
     <Compile Include="Models\TradePlaceContext.cs" />
     <Compile Include="Models\User.cs" />
@@ -259,7 +286,23 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201901151839443_UpadteDB.resx">
+      <DependentUpon>201901151839443_UpadteDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901161934194_addRoles.resx">
+      <DependentUpon>201901161934194_addRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901162038134_addRolesOnMoreTime.resx">
+      <DependentUpon>201901162038134_addRolesOnMoreTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901181458237_updateRolesNewNew.resx">
+      <DependentUpon>201901181458237_updateRolesNewNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901182027578_newnewnewAddRole.resx">
+      <DependentUpon>201901182027578_newnewnewAddRole.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

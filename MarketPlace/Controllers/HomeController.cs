@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using PagedList.Mvc;
 using PagedList;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MarketPlace.Controllers
 {
@@ -16,12 +17,30 @@ namespace MarketPlace.Controllers
     {
         TradePlaceContext db = new TradePlaceContext();
 
+        #region privateMethod
+
+        //bool IsCurrentUserInRole(string role)
+        //{
+        //    if (User != null)
+        //    {
+        //        var user = db.Users.Include(r => r.RoleId).FirstOrDefault(u => u.Email == User.Identity.Name);
+        //        if (user != null && user.RoleId.UserRole == role)
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
+
+        #endregion
+
 
         public ActionResult Index(string searchString, int? page)
         {
             int pageSize = 5;
             int pageNumber = (page ?? 1);
 
+            //IsCurrentUserInRole("Admin");
             var tradePlace = from tp in db.TradePlaces
                              select tp;
 
