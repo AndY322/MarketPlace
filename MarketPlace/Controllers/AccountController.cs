@@ -10,6 +10,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MarketPlace.Controllers
 {
@@ -55,7 +57,7 @@ namespace MarketPlace.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
+        public async Task<ActionResult> Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {
@@ -74,10 +76,12 @@ namespace MarketPlace.Controllers
                     using (TradePlaceContext db = new TradePlaceContext())
                     {
                         var hashedPassword = BCrypt.Net.BCrypt.HashPassword(model.Password, WorkFactor);
+                        Roles.AddUserToRole(model.Login, "User");
+                        
                         db.Users.Add(
                             new User {UserName = model.Login, PasswordHash = hashedPassword, EmailConfirmed = false,
                                 LockoutEnabled = false, AccessFailedCount = 0});
-                        db.SaveChanges();
+                        await db.SaveChangesAsync();
                         user = db.Users.Where(u => u.UserName == model.Login).FirstOrDefault();
                     }
                     if (user != null)

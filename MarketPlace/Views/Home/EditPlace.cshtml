@@ -4,7 +4,7 @@
     ViewBag.Title = "EditPlace";
 }
 
-<h2>Edit Place #@Model.Id</h2>
+<h2>Edit Place @Model.Name</h2>
 @using (Html.BeginForm("EditPlace", "Home", FormMethod.Post))
 {
 <fieldset>
@@ -28,13 +28,15 @@
         @Html.EditorFor(m => m.Address)
         @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
     </p>
+    <p>@Html.ActionLink("Add new employee", "AddEmployee", new { id = Model.Id })</p>
     <p>
         @Html.LabelFor(m => m.Description, "Description")
         <br />
-        @Html.TextAreaFor(m => m.Description, new { @class = "input-description"})
+        @Html.TextAreaFor(m => m.Description, new { @class = "input-description" })
         @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
     </p>
     <p><input type="submit" value="Submit" /></p>
 </fieldset>
 }
+
 

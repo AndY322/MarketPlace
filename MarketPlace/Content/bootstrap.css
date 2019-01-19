@@ -371,7 +371,7 @@ img {
   max-width: 100%;
   padding: 4px;
   line-height: 1.428571429;
-  background-color: #ffffff;
+  background-color: #4286f4;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -4497,13 +4497,14 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
-  border-color: #080808;
+    background-color: #46db7c;
+    border-color: #45dbab;
 }
 
-.navbar-inverse .navbar-brand {
-  color: #999999;
-}
+    .navbar-inverse .navbar-brand {
+        color: #bc2fb0;
+
+    }
 
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {

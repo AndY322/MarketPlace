@@ -5,7 +5,6 @@
 }
 
 <h2>@ViewBag.tradePlace.Name</h2>
-<p>@Html.ActionLink("Add new employee", "AddEmployee", new { id = ViewBag.tradePlace.Id})</p>
 <table class="table">
     <tr>
         <th>
@@ -32,10 +31,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.Post)
         </td>
+        @if (User.IsInRole("Admin"))
+        {
         <td>
             @Html.ActionLink("Edit employee", "EditEmployee", new { id = item.Id }) |
             @Html.ActionLink("Delete", "DeleteEmployee", new { id = item.Id })
         </td>
+        }
     </tr>
     }
 </table>

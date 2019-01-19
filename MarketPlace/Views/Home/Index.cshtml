@@ -25,7 +25,10 @@
         <th>
             Name
         </th>
-        <th></th>
+        @if (User.IsInRole("Admin"))
+        {
+            <th></th>
+        }
     </tr>
 
     @foreach (var item in Model)
@@ -40,18 +43,27 @@
             <td>
                 @Html.ActionLink(item.Name, "ShowDetails", new { id = item.Id })
             </td>
-            <td>
-                @Html.ActionLink("Edit place", "EditPlace", new { id = item.Id }) |
-                @Html.ActionLink("Remove", "Remove", new { id = item.Id })
-            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+
+                
+                    @Html.ActionLink("Edit place", "EditPlace", new { id = item.Id })|
+                    @Html.ActionLink("Remove", "Remove", new { id = item.Id })
+                
+                </td>
+            }
         </tr>
     }
 
 </table>
+@if (User.IsInRole("Admin"))
+{
 <p>
     @Html.ActionLink("Add New tradepalce", "AddPlace") |
     @Html.ActionLink("Add New employee", "CreateEmployeeOnMainPage")
 </p>
+}
 
 <p>
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) from @Model.PageCount

@@ -10,6 +10,7 @@ using System.Data.Entity;
 using PagedList.Mvc;
 using PagedList;
 using Microsoft.AspNet.Identity.EntityFramework;
+using MarketPlace.Attribute;
 
 namespace MarketPlace.Controllers
 {
@@ -17,30 +18,10 @@ namespace MarketPlace.Controllers
     {
         TradePlaceContext db = new TradePlaceContext();
 
-        #region privateMethod
-
-        //bool IsCurrentUserInRole(string role)
-        //{
-        //    if (User != null)
-        //    {
-        //        var user = db.Users.Include(r => r.RoleId).FirstOrDefault(u => u.Email == User.Identity.Name);
-        //        if (user != null && user.RoleId.UserRole == role)
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
-
-        #endregion
-
-
         public ActionResult Index(string searchString, int? page)
         {
             int pageSize = 5;
             int pageNumber = (page ?? 1);
-
-            //IsCurrentUserInRole("Admin");
             var tradePlace = from tp in db.TradePlaces
                              select tp;
 
@@ -55,7 +36,7 @@ namespace MarketPlace.Controllers
 
 
         [HttpGet]
-        [Authorize]
+        [Auth(Roles = "Admin")]
         public ActionResult Remove(int id)
         {
             TradePlace tradePlace = db.TradePlaces.Find(id);
@@ -67,7 +48,7 @@ namespace MarketPlace.Controllers
         }
 
 
-        [Authorize]
+        [Auth(Roles = "Admin")]
         [HttpPost, ActionName("Remove")]
         public ActionResult RemoveConfirmed(int id)
         {
@@ -82,7 +63,7 @@ namespace MarketPlace.Controllers
         }
 
 
-        [Authorize]
+        [Auth(Roles = "Admin")]
         [HttpGet]
         public ActionResult AddPlace()
         {
@@ -90,7 +71,7 @@ namespace MarketPlace.Controllers
         }
 
 
-        [Authorize]
+        [Auth(Roles = "Admin")]
         [HttpPost]
         public ActionResult AddPlace(TradePlace place)
         {
@@ -104,7 +85,7 @@ namespace MarketPlace.Controllers
         }
 
 
-        [Authorize]
+        [Auth(Roles = "Admin")]
         [HttpGet]
         public ActionResult EditPlace(int? id)
         {
@@ -121,7 +102,7 @@ namespace MarketPlace.Controllers
         }
 
 
-        [Authorize]
+        [Auth(Roles = "Admin")]
         [HttpPost]
         public ActionResult EditPlace(TradePlace tradePlace)
         {
@@ -154,7 +135,7 @@ namespace MarketPlace.Controllers
         }
 
 
-        [Authorize]
+        [Auth(Roles = "Admin")]
         [HttpGet]
         public ActionResult CreateEmployeeOnMainPage()
         {
@@ -164,7 +145,7 @@ namespace MarketPlace.Controllers
         }
 
 
-        [Authorize]
+        [Auth(Roles = "Admin")]
         [HttpPost]
         public ActionResult CreateEmployeeOnMainPage(Employee employee)
         {
@@ -180,7 +161,7 @@ namespace MarketPlace.Controllers
         }
 
 
-        [Authorize]
+        [Auth(Roles = "Admin")]
         public ActionResult DeleteEmployee(int? id)
         {
             if (id == null)
@@ -198,7 +179,7 @@ namespace MarketPlace.Controllers
         }
 
 
-        [Authorize]
+        [Auth(Roles = "Admin")]
         [HttpGet]
         public ActionResult AddEmployee(int id)
         {
@@ -213,7 +194,7 @@ namespace MarketPlace.Controllers
         }
 
 
-        [Authorize]
+        [Auth(Roles = "Admin")]
         [HttpPost, ActionName("AddEmployee")]
         public ActionResult AddEmployeePost(Employee employee)
         {
@@ -232,7 +213,7 @@ namespace MarketPlace.Controllers
         }
 
 
-        [Authorize]
+        [Auth(Roles = "Admin")]
         [HttpGet]
         public ActionResult EditEmployee(int id)
         {
@@ -246,7 +227,7 @@ namespace MarketPlace.Controllers
         }
 
 
-        [Authorize]
+        [Auth(Roles = "Admin")]
         [HttpPost]
         public ActionResult EditEmployee(Employee employee)
         {

@@ -19,7 +19,7 @@
                 </button>
                 @Html.ActionLink("Схема торгового центра", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="col-md-4 col-md-offset-4" style="font-size: 120%; color: red; position: absolute; right: 100px; top: 10px;">
+            <div class="col-md-4 col-md-offset-4" style="font-size: 120%; color: #1d1366; position: absolute; right: 100px; top: 10px;">
                     @if (User.Identity.IsAuthenticated)
                     {
                         @Html.DisplayName(@User.Identity.Name);
